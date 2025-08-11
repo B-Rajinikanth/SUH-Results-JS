@@ -14,7 +14,7 @@ const loadExcel = () => {
 		.then((res) => res.arrayBuffer())
 		.then((buffer) => {
 			const workbook = XLSX.read(buffer, { type: "array" });
-			const sheetName = workbook.SheetNames[2];
+			const sheetName = workbook.SheetNames[0];
 			const worksheet = workbook.Sheets[sheetName];
 			const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
@@ -81,12 +81,13 @@ const getResult = () => {
 	resultDisplay.classList.remove('hidden')
 
 	if (!studentResult) {
-		document.getElementById("errorMessage").innerHTML = "Student not found or your results are withheld, contact SU Office.";
+		document.getElementById("errorMessage").innerHTML = `Student not found or your results are withheld, for details contact <span class="font-bold underline italic">University Office</span>.`;
 		tbody.innerHTML = "";
 		document.getElementById("urnRes").innerHTML = "";
 		document.getElementById("nameRes").innerHTML = "";
 		document.getElementById("deptRes").innerHTML = "";
 		document.getElementById("sorRes").innerHTML = "";
+		document.getElementById('program').innerHTML = "";
 		withheldBox.classList.add('hidden')
 		tableHeader.classList.add('hidden')
 	} else {
@@ -130,13 +131,13 @@ const getResult = () => {
 			</td>
 		`;
 		tbody.appendChild(sgpaRow);
-		const cgpaRow = document.createElement("tr");
-		cgpaRow.innerHTML = `
-			<td colspan="5" class="font-bold text-blue-800 bg-green-100 border-gray-200 border-b-1 p-2 text-center">
-				CGPA: ${studentResult.cgpa}
-			</td>
-		`;
-		tbody.appendChild(cgpaRow);
+		// const cgpaRow = document.createElement("tr");
+		// cgpaRow.innerHTML = `
+		// 	<td colspan="5" class="font-bold text-blue-800 bg-green-100 border-gray-200 border-b-1 p-2 text-center">
+		// 		CGPA: ${studentResult.cgpa}
+		// 	</td>
+		// `;
+		// tbody.appendChild(cgpaRow);
 	}
 };
 

@@ -10,11 +10,11 @@ const withheldBox = document.getElementById('withheldBox')
 const tableHeader = document.getElementById('tableHeader')
 
 const loadExcel = () => {
-	fetch("Result_Final.xlsx")
+	fetch("Result_Regular.xlsx")
 		.then((res) => res.arrayBuffer())
 		.then((buffer) => {
 			const workbook = XLSX.read(buffer, { type: "array" });
-			const sheetName = workbook.SheetNames[2];
+			const sheetName = workbook.SheetNames[0];
 			const worksheet = workbook.Sheets[sheetName];
 			const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
@@ -81,15 +81,18 @@ const getResult = () => {
 	resultDisplay.classList.remove('hidden')
 
 	if (!studentResult) {
-		document.getElementById("errorMessage").innerHTML = "Student not found or your results are withheld, contact SU Office.";
+		document.getElementById("errorMessage").innerHTML =`Student not found or your results are withheld, for details contact <span class= "font-bold underline italic">University Office</span>.`;
 		tbody.innerHTML = "";
 		document.getElementById("urnRes").innerHTML = "";
 		document.getElementById("nameRes").innerHTML = "";
 		document.getElementById("deptRes").innerHTML = "";
 		document.getElementById("sorRes").innerHTML = "";
+		document.getElementById('program').innerHTML = "";
+		document.getElementById("resBox").classList.add('hidden')
 		withheldBox.classList.add('hidden')
 		tableHeader.classList.add('hidden')
 	} else {
+		document.getElementById("resBox").classList.remove('hidden')
 		document.getElementById("errorMessage").innerHTML = "";
 		document.getElementById("urnRes").innerHTML = `Register Number: <span class="font-semibold"> ${studentResult.urn} </span>`;
 		document.getElementById("nameRes").innerHTML = `Student Name: <span class="font-semibold"> ${studentResult.name} </span>`;
