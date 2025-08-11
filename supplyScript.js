@@ -81,7 +81,7 @@ const getResult = () => {
 	resultDisplay.classList.remove('hidden')
 
 	if (!studentResult) {
-		document.getElementById("errorMessage").innerHTML = `Student not found or your results are withheld, for details contact <span class="font-bold underline italic">University Office</span>.`;
+		document.getElementById("errorMessage").innerHTML = `If your result is not displayed, please contact the <span class="font-bold underline italic">University Office</span>.`;
 		tbody.innerHTML = "";
 		document.getElementById("urnRes").innerHTML = "";
 		document.getElementById("nameRes").innerHTML = "";
