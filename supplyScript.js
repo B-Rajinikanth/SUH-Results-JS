@@ -65,7 +65,7 @@ const loadExcel = () => {
 };
 
 const getResult = () => {
-	const urn = document.getElementById("urn").value.trim();
+	const urn = document.getElementById("urn").value.trim().toUpperCase();
 
 	if (!urn) {
 		alert("Please enter a valid URN.");
@@ -88,6 +88,7 @@ const getResult = () => {
 		document.getElementById("deptRes").innerHTML = "";
 		document.getElementById("sorRes").innerHTML = "";
 		document.getElementById('program').innerHTML = "";
+		document.getElementById("resBox").classList.add('hidden')
 		withheldBox.classList.add('hidden')
 		tableHeader.classList.add('hidden')
 	} else {

@@ -65,7 +65,7 @@ const loadExcel = () => {
 };
 
 const getResult = () => {
-	const urn = document.getElementById("urn").value.trim();
+	const urn = document.getElementById("urn").value.trim().toUpperCase();
 
 	if (!urn) {
 		alert("Please enter a valid URN.");
