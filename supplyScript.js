@@ -92,6 +92,7 @@ const getResult = () => {
 		withheldBox.classList.add('hidden')
 		tableHeader.classList.add('hidden')
 	} else {
+		document.getElementById("resBox").classList.remove('hidden')
 		document.getElementById("errorMessage").innerHTML = "";
 		document.getElementById("urnRes").innerHTML = `Register Number: <span class="font-semibold"> ${studentResult.urn} </span>`;
 		document.getElementById("nameRes").innerHTML = `Student Name: <span class="font-semibold"> ${studentResult.name} </span>`;
