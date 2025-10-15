@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+		<title>Sreenidhi University - Results</title>
+	</head>
+	<body>
+		<div class="w-full flex justify-center p-5">
+			<a href="./index.html"><img class="w-50" src="./SNU Logo with tagline.png" alt="SUH"></a>
+		</div>
+		<div class="w-full flex flex-col items-center justify-center p-2 gap-2">
+			<p class="text-2xl text-green-900 font-bold uppercase">School of Engineering</p>
+			<p class="text-xl text-green-900 font-bold text-center">Provisional Results for Semester Supplementary Examinations - June 2025</p>
+			<p class="text-xl text-blue-800 font-bold">Statement of Grades</p>
+		</div>
+		<div class="w-full flex flex-col md:flex-row justify-center md:justify-between px-20">
+			<div class="border-b-1 border-green-300 md:border-b-0">
+				<p class="text-center"><a class="text-green-800 cursor-pointer hover:underline" href="./index.html">Home</a> <span class="text-gray-500">/ Review Results</span></p>
+			</div>
+			<div>
+				<p class="text-center">Published Date: 15-10-2025</p>
+			</div>
+		</div>
+		
+		<div class="m-5">
+			<div
+			class="w-full flex flex-col bg-green-100 md:flex-row justify-center items-center mt-5 px-5 py-8 gap-5 rounded-xl shadow-lg"
+		>
+			<!-- <input type="file" id="uploadExcel" /> -->
+			 <label class="text-green-900 italic" for="">Enter your UR Number</label>
+			<input
+				class="bg-gray-100 border border-gray-400 rounded-md px-4 py-2 w-[90%] md:w-[50%]"
+				type="text"
+				id="urn"
+				placeholder="enter your URN"
+				required
+			/>
+			<button
+				class="border rounded-md bg-green-800 px-4 py-2 text-gray-50 cursor-pointer hover:bg-green-600"
+				onclick="getResult()"
+			>
+				Show Result
+			</button>
+		</div>
+		</div>
+
+		<div id="resultDisplay" class="hidden">
+		<div class="w-full mb-10 px-10 bg-gray-50">
+			<div class="flex justify-center py-3">
+				<p class="text-red-600" id="errorMessage"></p>
+			</div>
+			<div class="mx-1 mb-2 md:mx-10">
+				<div class="w-full flex flex-col md:flex-row justify-between">
+					<p id="nameRes"></p>
+					<p id="urnRes"></p>
+				</div>
+				<div class="w-full flex flex-col md:flex-row justify-between">
+					<p id="program"></p>
+					<p id="deptRes"></p>
+					<p id="sorRes"></p>
+				</div>
+			</div>
+			<div class="w-full flex justify-center" id="student-info">
+				<div id="resBox" class="border border-cyan-200 p-2 bg-cyan-300 rounded-md shadow-md">
+					<table class="table-auto" id="courses-table">
+						<thead id="tableHeader" class="bg-blue-200 border-b-1 border-gray-200">
+							<tr>
+								<th class="p-2 bg-cyan-300 border-gray-200">Course Code</th>
+								<th class="p-2 bg-cyan-300 border-gray-200">Course Title</th>
+								<th class="p-2 bg-cyan-300 border-gray-200">Grade</th>
+								<th class="p-2 bg-cyan-300 border-gray-200">Result</th>
+								<th class="p-2 bg-cyan-300 border-gray-200">Credits</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Dynamic Rows Go Here -->
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div id="withheldBox" class="w-full my-5 px-3 pb-5 border border-gray-300 rounded-md">
+				<p class="text-red-600 font-semibold text-center my-2">*- Results Withheld</p>
+				<p class="font-semibold">NOTE:</p>
+				<ol class="list-decimal pl-4">
+					<li>Students must secure a minimum of 35% in internal assessments and an aggregate (CIA + SEE) of 40% to be eligible for passing the Theory courses.</li>
+					<li>Students must secure a minimum of 35% in external assessments and an aggregate (CIA + SEE) of 50% to be eligible for passing the Practical course.</li>
+					<li>Student must secure a minimum of 32.5% in external lab assessments (out od 20 marks) ans 37% in external theory assessment and an aggregate (CIA + SEE) of 50% to be eligible for passing the Joint Courses.
+					</li>
+					<li>Please Contact the Office of Controller of Examinations within 15 days of publication of the results for any clarification</li>
+				</ol>
+
+			</div>
+			<div class="flex justify-center">
+				<button class="px-4 py-2 mb-5 bg-green-800 rounded-md text-gray-50 cursor-pointer hover:bg-green-600" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+			</div>
+		</div>
+		</div>
+
+		<script src="./reScript.js"></script>
+	</body>
+</html>
