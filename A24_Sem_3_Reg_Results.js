@@ -99,7 +99,7 @@ const getResult = () => {
 
 		let dept = studentResult.urn.includes("CSEAI") ? "CSE (AIML)" : "CSE";
 		document.getElementById("deptRes").innerHTML = `Department: <span class="font-semibold"> ${dept} </span>`;
-		document.getElementById("sorRes").innerHTML = `Semester: <span class="font-semibold">II</span>`;
+		document.getElementById("sorRes").innerHTML = `Semester: <span class="font-semibold">III</span>`;
 
 		document.getElementById('program').innerHTML = `Program: <span class="font-semibold">B.Tech</span>`
 
